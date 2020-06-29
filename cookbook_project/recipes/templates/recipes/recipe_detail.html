@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+{% extends "recipes/recipe_base.html" %}
+
+{% block prerec %}
+    {% if user.is_authenticated %}
+    <div class="jumbotron recipeheading">
+        <h1 class="head">Welcome @{{user.username}} to the recipe: <br><br>{{recipe.name.upper}}</h1>
+    </div>
+    {% endif %}
+{% endblock %}
+{% block rec_content %}
+    {% if user.is_authenticated %}  
+        <div class="jumbotron recipedetail">
+            {% if recipe.recipe_image %}
+                <table class="foodtable">
+                    <tr class="foodtablerow">
+                        <td class="recipetdtwo">
+                            <h1 class="headrecipe">Recipe: {{recipe.name.capitalize}}</a></h1>
+                            <br>
+                            <br>
+                            <p>Recipe by: <strong>@{{recipe.user.username}}</strong></p>
+                            <p>Created at: {{ recipe.created_at }}</p>
+                        </td>
+                        <td class="tdimg">
+                            <div class="foodimgtwo">
+                                <img class="recipeimg" src="{{recipe.recipe_image.url}}" alt="No Image">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            {% else %}
+                <h1>Recipe: {{recipe.name.capitalize}}</a></h1>
+                <br>
+                <br>
+                <p>Recipe by: <strong>@{{recipe.user.username}}</strong></p>
+                <p>Created at: {{ recipe.created_at }}</p>
+            {%endif%}
+                <hr class="separaterecipes">
+                <div class="recipeingred">
+                    <h4>Ingredients:</h4>
+                    <br>
+                    <div class="ingred">
+                        <p>{{recipe.ingredients|safe|linebreaksbr}}</p><br>
+                    </div>
+                </div>
+                <hr class="separaterecipes">
+                <div class="recipedescr">
+                    <h4>Description:</h4>
+                    <br>
+                    <div class="ingred">
+                        <p>{{recipe.description|safe|linebreaksbr}}</p>
+                    </div>
+                </div>
+            <hr class="separaterecipes">
+                <a href="{% url 'recipes:update' pk=recipe.pk %}" title="update" class="btn btn-sm btn-success">Edit Recipe</a>
+                <br>
+                <br>
+                <br>
+                <h5>Send data via telegram bot (Cookbook-bot) to your phone!</h5>
+                <br>
+                <p>You need to register before the bot can send data to you:</p>
+                <a href="{% url 'recipes:create_id' %}" title="update" id="registerbtn" class="btn btn-sm btn-primary">Register here</a>
+                <br>
+                <br>
+                <hr class="separaterecipes">
+                <h6>Wich data of this recipe do you want the bot to send to your phone?</h6>
+            <form name="" action="{%url 'recipes:senddata' pk=recipe.pk %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <select class="form-control" id="exampleFormControlSelect1" name="testselect">
+                      <option>Ingredients</option>
+                      <option>Ingredients & Description</option>
+                    </select><br>
+                    <input type="submit" value="Send Recipe" class="btn btn-sm btn-primary">
+                  </div>
+            </form>
+                {%if user.is_superuser and not hide_delete%}
+                <br>
+                <br>
+                <a href="{% url 'recipes:delete' pk=recipe.pk %}" title="delete" class="btn btn-md btn-warning">Delete recipe</a>
+                {%endif%}
+        {% endif %}
+		</div>
+{% endblock %}

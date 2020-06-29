@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends "categories/category_base.html" %}
+
+    {% block cat_content %}
+        {% if user.is_authenticated %}
+            <div class="jumbotron recipeheading">
+                <h1 class="head">Welcome @{{user.username}} to the category: {{category.name.upper}}</h1>
+                <br>
+                <a href="{% url 'recipes:create' %}" class="btn btn-lg btn-secondary detailcreate">Add a new recipe!</a>
+            </div>
+        {%endif %}
+
+
+        {% if user.is_authenticated %}  
+    <div class="jumbotron">
+            {% if category.recipes.count == 0 %}
+                <br>
+                <h3>There are no recipes yet in this category!</h3>
+                <br>
+            {% else %}
+
+                {% for recipe in object_list %} <!--recipes is the related name I used in recipe Models to connect it to the category model-->
+                    {% include "recipes/_recipe.html" %} <!--This html is from the recipe folder means, we can simply call recipe.attributes and get the data (and ignore the category model)-->
+                    <hr class="separaterecipes">
+                {% endfor %}
+            {% endif %}
+        {%endif%}
+
+        <div class="media-footer">
+        {% if user.is_authenticated and user.is_superuser and not hide_delete %}
+        <br>
+        <a id="detaildelete" href="{% url 'categories:delete' pk=category.pk %}" title="delete" class="btn btn-md btn-warning">Delete Category</a>
+        <br>
+        <br>
+        <br>
+        {% endif %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <br>  
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

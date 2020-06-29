@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends "recipes/recipe_base.html" %}
+
+{% load bootstrap4 %}
+
+{% block rec_content %}
+<br>
+    {% if user.is_authenticated and user == recipe.user or user.is_superuser  %}
+    <div class="jumbotron contain">
+        <h1>Edit recipe @{{recipe.name}}</h1>
+        <form action="" method="POST" enctype="multipart/form-data"> <!--Always add enctype when uploading images otherwise 302, won t recognize the file!-->
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-md btn-success" name="" id="" value="Save Changes">
+            <a class="btn btn-primary btn-md btn-danger cancelbtn" href="{% url 'recipes:single' slug=recipe.slug %}">Cancel</a>
+        </form>
+        <script>var editor = new MediumEditor('.editable');</script> <!--Medium editor script to style the text input-->
+    </div>
+    {% else %}
+    <div class="jumbotron denied">
+        <h1>Acccess denied!</h1>
+        <br>
+        <h3>As you are neither a superuser nor the creator of this recipe you have not the rights to edit this recipe!</h3>
+        <br>
+        <h3>Feel free to edit your own recipes!</h3>
+        <br>
+        <br>
+        <a href="{% url 'recipes:single' slug=recipe.slug %}" class="btn btn-lg btn-info loginbtn">Go back</a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+{% endblock %}
+
+<!-- {{recipe.name.capitalize}} -->

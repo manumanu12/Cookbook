@@ -1,0 +1,53 @@
+{% extends "recipes/recipe_base.html" %}
+
+{% block rec_content %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron recipeheading">
+            <h1 class="head">@{{user.username}} these are your personal recipes:</h1>
+            <br>
+            <h2 class="head">Recipes you have created so far: {{user.recipes.count}}</h2>
+            <br>
+        </div>
+    {%endif %}
+
+<div class="jumbotron">
+    {% if category.recipes.count == 0 %}
+            <br>
+            <h3>There are no recipes yet in this category!</h3>
+            <br>
+    {% else %}
+        {% for recipe in object_list %}
+            {%include 'recipes/_recipe.html'%}
+            <hr class="separaterecipes">
+        {%endfor%}
+    {% endif %}
+    
+    <br>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+    
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}
+

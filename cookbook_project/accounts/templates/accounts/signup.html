@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<br>
+<br>
+<div class="jumbotron signupdiv">
+    <h1>Sign Up!</h1>
+    <br>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br>
+        <input type="submit" class="btn btn-success" value="Sign up">
+    </form>
+</div>
+<br>
+<br>
+{% endblock %}

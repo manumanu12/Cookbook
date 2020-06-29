@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="jumbotron landing">
+        <h1>Goodbye!</h1>
+        <h2>Hope you enjoyed your time on this page and found what you were looking for!</h2>
+        <h2>See you next time!</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6"><img src="{% static 'cookbook_project/images/beef_raw.jpg' %}" alt="" class="img-thumbnail img-fluid"></div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-6"><img src="{% static 'cookbook_project/images/red_wine_bottles.jpg' %}" alt="" class="img-thumbnail img-fluid"></div>
+        </div>
+    </div>
+    <br>
+    <br>
+{% endblock %}

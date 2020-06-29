@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="logindiv">
+    <h1>Member Login</h1>
+    <br>
+    <br>
+    <form class="loginform" action="" method="POST">
+        {% csrf_token %}
+        <div class="loginform">
+            {{form.as_p}}
+        </div>
+        <br>
+            <input type="submit" class="btn btn-success loginbtn" value="Login">
+    </form>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

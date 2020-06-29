@@ -1,0 +1,230 @@
+
+/* navbar brand */
+#brand {
+    color: white;
+    font-size: 26px;
+    font-family: "Parisienne", cursive;
+}
+
+/* navbar items */
+.test {
+    color: white;
+    font-size: 18px;
+    font-family: "Poiret One", cursive;
+}
+
+#recipes, #about, #signup, #login, #greeting, #create {
+    margin-right: 90px;
+}
+
+
+/* The form class to style the description field when creating a recipe */
+.postcontent {
+    min-height: 200px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    color: black;
+    padding: 20px;
+}
+
+/* The form class to style the ingredients field when creating a recipe */
+.postingredients{
+    min-height: 100px;
+    background-color: white;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    color: black;
+    padding: 20px;
+}
+
+/* div for forms (create category, create recipe) */
+.contain{
+    position: relative;
+}
+
+/* The form class to style the name and category field when creating a recipe */
+.control {
+    display: block;
+    width: 160px;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    height: 33px;
+    width: 260px;
+    padding-left: 20px;
+}
+
+.cancelbtn {
+    position: absolute;
+    right: 33px;
+}
+
+/* background color */
+body {
+    background-color: #E3DAC9;
+}
+/* 
+background: linear-gradient(-45deg,  #264653, #90be6d );
+    background-size: 400% 400%; */
+
+/* delete button category detail page (recipe overview): */
+#detaildelete {
+    position: absolute;
+}
+
+/* recipe create button class */
+.detailcreate {
+    position: relative;
+    bottom: -20px;
+}
+
+
+/* Style the recipe detail div where I can read the precise recipe */
+
+/* Heading jumbotron for recipe and category */
+.recipeheading{
+    /* background: linear-gradient(to right, #73c339, #4edb94); */
+    font-family: "Yantramanav", sans-serif;
+    background-color: rgb(144, 12, 63,0.76);
+    margin-bottom: 0em;
+    text-align: center;
+}
+
+.recipehead {
+    height: 460px;
+    text-align: center;
+    font-family: "Yantramanav", sans-serif;
+    background-color: rgb(144, 12, 63,0.76);
+    margin-bottom: 0em;
+}
+
+.recipetitle {
+    margin-top: 0em;
+}
+
+/* border for ingredients and description field in recipe detail */
+.ingred {
+    background-color: white;
+    border: 2px solid;
+    border-image-slice: 1;
+    border-width: 2px;
+    border-color: rgb(144, 12, 63, 0.8);
+    border-radius: 40px;
+    padding: 60px;
+    /* border-image-source: linear-gradient(to right, #73c339, #4edb94); */
+}
+
+/* hr line to separate recipes in category detail view */
+.separaterecipes {
+    border-color: rgb(144, 12, 63);
+}
+
+/* Edit recipe: access denied page/div */
+.denied {
+    background-color: rgb(144, 12, 63, 0.26);
+    text-align: center;
+}
+
+/* create telegram account explanation - list-style-position to move the list numbers of ol in the center as well */
+.telegram {
+    text-align: center;
+    list-style-position: inside;
+}
+
+.steps {
+    font-size: 18px;
+}
+
+
+/* entire page div, content div and footer class to create a sticky footer */
+.content {
+    padding-bottom: 12.6em;
+}
+
+.sticky-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4.6em; /* height for footer and content(not page)div with padding buttom is the key to create a sticky footer!!*/
+
+}
+
+.page {
+    position: relative;
+    min-height: 100%;
+    
+}
+
+/* Category/recipe list names -> changing color */
+.categoryname {
+    color: #343a40;
+
+}
+/* hover over names */
+.categoryname:hover {
+    color: rgb(144, 12, 63);
+}
+
+/* head divs color */
+.head {
+    color: white;
+}
+/* the recipe detail main div below the heading - we use overflow: hidden to cut out the image, when going across the div border in zoom */
+.recipedetail {
+    color: #343a40;
+    overflow: hidden;
+    padding-top: 2em;
+}
+
+/* the recipe images we can upload */
+.recipeimg {
+    max-width: 100%;
+    max-height: 100%;
+
+}
+/* the div in which we place the img to keep the size controled */
+.foodimg {
+    width: 260px;
+    height: 140px;
+    text-align: center;
+}
+/* recipe detail view, bigger img */
+.foodimgtwo {
+    width: 420px;
+    height: 240px;
+    text-align: center;
+}
+/* size of the td in which we place the image */
+.tdimg {
+    width: 400px;
+}
+/* the table for the recipe/ food image list */
+.foodtable {
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+/* the td for recipe title, recipe by, and created at text */
+.recipetd {
+    width: 600px;
+    padding: 0em;
+}
+
+.recipetdtwo {
+    width: 500px;
+}
+
+/* recipe title below the header left to the image of recipe detail */
+.headrecipe {
+    margin-top: -0.6em;
+}
+
+#id_recipe_image {
+    margin-top: 20px;
+}
+
+
+/* to make buttons longer */
+.loginbtn {
+    width: 360px;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "recipes/recipe_base.html" %}
+
+{% block prerec %}
+    {% if user.is_authenticated %}
+    <div class="jumbotron recipeheading">
+        <h1 class="head">Register here for the telegram bot!</h1>
+    </div>
+    <div class="jumbotron telegram">
+        <h4>In order to enable the bot sending you data  you need to follow these steps:</h4>
+        <br>
+            <ol class="steps">
+                <li>Download the telegram app and create an account</li><br>
+                <li>Search in telegram for the bot: Cookbook-bot (Bot´s Username: @Recipe_cookbook_bot)</li><br>
+                <li>Send a message to the bot with your Cookbook username</li><br>
+                <li>Wait for the superuser (done by myself for security reasons) to embed your chat id</li><br>
+                <li>Once I added your chat id to your account you can now conveniently use the telegram function <br> by simply clicking the <strong>"Send Recipe"</strong> button below each recipe</li>
+            </ol>
+        <br>
+        <br>
+        <a href="{% url 'recipes:all' %}" class="btn btn-lg btn-info loginbtn">Got it!</a>
+    </div>
+    <br>
+    {% endif %}
+{% endblock %}

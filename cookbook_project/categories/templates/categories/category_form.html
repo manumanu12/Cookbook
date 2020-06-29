@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends "categories/category_base.html" %}
+{% load bootstrap4 %}
+
+
+{% block cat_content %}
+    {% if user.is_authenticated %}
+    <br>
+        <div class="jumbotron contain">
+            <h1>Create a new category!</h1><br>
+            <br>
+            <form action="{% url 'categories:create' %}" method="POST" id="groupForm">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <br>
+                <input type="submit" class="btn btn-primary btn-md btn-success" value="Create">
+                <a class="btn btn-primary btn-md btn-danger cancelbtn" href="{% url 'categories:all' %}">Cancel</a>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}

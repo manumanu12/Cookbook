@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends "recipes/recipe_base.html" %}
+{% load bootstrap4 %}
+
+{% block rec_content %}
+    {% if user.is_authenticated %}
+        <br>
+        <div class="jumbotron contain">
+            <h1>Create a new recipe!</h1>
+            <br>
+            <h5>Hint: You can style the text by highlighting it with your mouse <br>You can also voluntarily add an image to your recipe</h5>
+            <br>
+                <form class="recipe_form" action="{% url 'recipes:create' %}" enctype="multipart/form-data" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <br>
+                    <input type="submit" class="btn btn-md btn-success" value="Add recipe">
+                    <a class="btn btn-primary btn-md btn-danger cancelbtn" href="{% url 'categories:all' %}">Cancel</a>
+                </form>
+                <script>var editor = new MediumEditor('.editable');</script>
+        </div>
+    {% endif %}
+{% endblock %}
+

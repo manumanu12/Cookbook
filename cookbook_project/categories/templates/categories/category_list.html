@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% extends "categories/category_base.html" %}
+
+{% block precat %}
+<div class="jumbotron recipehead">
+    <div class="content">
+        {% if user.is_authenticated %}
+            <br>
+            <h1 class="head">Welcome to the recipe categories @{{user.username}}!</h1>
+            <br>
+            <br>
+            <h2 class="head">You can either create a new category or explore the recipes in each category</h2>
+            <br>
+            <br>
+            <a href="{% url 'categories:create' %}" class="btn btn-lg btn-secondary detailcreate">Create a new Category!</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block cat_content%}
+    {% if user.is_authenticated %}  
+        <div class="jumbotron categories">
+        {% for category in page_obj %} <!--we use page_obj as we apply pagination -->
+            <h3><svg width="36" height="32" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0)">
+                <path d="M0 10.3308H7.96591V3.25H0V10.3308ZM2.10965 5.12524H5.85654V8.45581H2.10965V5.12524Z" fill="black" fill-opacity="0.6"/>
+                <path d="M0 10.3308H7.96591V3.25H0V10.3308ZM2.10965 5.12524H5.85654V8.45581H2.10965V5.12524Z" fill="url(#paint0_linear)"/>
+                <path d="M10.4775 3.25V10.3308H35.9801V3.25H10.4775ZM33.8705 8.45581H12.5872V5.12524H33.8705V8.45581Z" fill="black" fill-opacity="0.6"/>
+                <path d="M10.4775 3.25V10.3308H35.9801V3.25H10.4775ZM33.8705 8.45581H12.5872V5.12524H33.8705V8.45581Z" fill="url(#paint1_linear)"/>
+                <path d="M0 19.3316H7.96591V12.2508H0V19.3316ZM2.10965 14.1258H5.85654V17.4564H2.10965V14.1258Z" fill="black" fill-opacity="0.6"/>
+                <path d="M0 19.3316H7.96591V12.2508H0V19.3316ZM2.10965 14.1258H5.85654V17.4564H2.10965V14.1258Z" fill="url(#paint2_linear)"/>
+                <path d="M10.4775 19.3316H35.9801V12.2508H10.4775V19.3316ZM12.5872 14.1258H33.8705V17.4564H12.5872V14.1258Z" fill="black" fill-opacity="0.6"/>
+                <path d="M10.4775 19.3316H35.9801V12.2508H10.4775V19.3316ZM12.5872 14.1258H33.8705V17.4564H12.5872V14.1258Z" fill="url(#paint3_linear)"/>
+                <path d="M0 28.3327H7.96591V21.2516H0V28.3327ZM2.10965 23.1269H5.85654V26.4574H2.10965V23.1269Z" fill="black" fill-opacity="0.6"/>
+                <path d="M0 28.3327H7.96591V21.2516H0V28.3327ZM2.10965 23.1269H5.85654V26.4574H2.10965V23.1269Z" fill="url(#paint4_linear)"/>
+                <path d="M10.4775 28.3327H35.9801V21.2516H10.4775V28.3327ZM12.5872 23.1269H33.8705V26.4574H12.5872V23.1269Z" fill="black" fill-opacity="0.6"/>
+                <path d="M10.4775 28.3327H35.9801V21.2516H10.4775V28.3327ZM12.5872 23.1269H33.8705V26.4574H12.5872V23.1269Z" fill="url(#paint5_linear)"/>
+                </g>
+                <defs>
+                <linearGradient id="paint0_linear" x1="3.98296" y1="3.25" x2="3.98296" y2="10.3308" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint1_linear" x1="23.2288" y1="3.25" x2="23.2288" y2="10.3308" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint2_linear" x1="3.98296" y1="12.2508" x2="3.98296" y2="19.3316" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint3_linear" x1="23.2288" y1="12.2508" x2="23.2288" y2="19.3316" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint4_linear" x1="3.98296" y1="21.2516" x2="3.98296" y2="28.3327" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="paint5_linear" x1="23.2288" y1="21.2516" x2="23.2288" y2="28.3327" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#E33636"/>
+                <stop offset="1" stop-color="white" stop-opacity="0"/>
+                </linearGradient>
+                <clipPath id="clip0">
+                <rect width="36" height="32" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>                
+                <a class="categoryname" href="{% url 'categories:single' slug=category.slug %}">{{category.name.capitalize}}</a>
+            </h3><br>
+            <h5>Description: {{category.description}}</h5>
+            <hr class="separaterecipes">
+            <br>
+        {% endfor %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}
