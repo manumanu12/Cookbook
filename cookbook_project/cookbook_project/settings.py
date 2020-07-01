@@ -22,7 +22,7 @@ MEDIA_DIR = os.path.join(BASE_DIR,"media")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$ey=oipokaa965i=i_w5$yru93mltfrsx^%((!aqj9tm1g@!u2'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -46,11 +46,8 @@ INSTALLED_APPS = [
     "telegram_profile",
 ]
 
-# TELEGRAM = {
-#     "bot_token" : "1044044748:AAF48EGVPOdskpJUlDCLNn_WdA7KYhi5obo",
-#     "channel_name":"Cookbook",
-# }
-BOT_TOKEN = "1044044748:AAF48EGVPOdskpJUlDCLNn_WdA7KYhi5obo" #The bot´s token I need to connect to my bot
+
+BOT_TOKEN = "" #The bot´s token I need to connect to my bot
 BOT_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
 
